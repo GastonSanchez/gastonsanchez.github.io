@@ -2,7 +2,7 @@
 body{
   margin: 0px;
   font-family: 'Montserrat', sans-serif;
-  border: 1px solid #000;
+  border: px solid #000;
   height:1000px;
   background: #CAF1FE;
 }
@@ -138,29 +138,55 @@ p{
 }
 /*forma de los textos de la pagina contact*/
 address p{
-  font-size: 25px;
+  font-size: 30px;
+  width: 550px;
   display: block;
   padding: 40px;
+  margin-left: 300px;
 }
 
 table.partidos {
   border: 0px solid black;
-  margin-left: 370px;
+  margin-left: 300px;
+}
+table.ubicaciones {
+  border: 0px solid black;
+  margin-left: 270px;
 }
 
 th{
   width: 170px;
 }
 td{
-  padding-left: 64px
+  padding-left: 64px;
 }
 td.fecha{
   padding-left: 65px;
 }
 td.lugar{
   width: 130px;
-  padding-left: 50px
+  padding-left: 50px;
 }
 h3{
-  display: inline
+  display: inline;
+  margin-left: 130px;
+}
+.reglas{
+  display: inline-block;
+  margin-left: 400px;
+  padding: 2px;
+  text-decoration: underline;
+  font-size: 20px;
+}
+.datos{
+  display: inline-block;
+  width: 600px;
+  padding: 30px;
+}
+footer{
+  background: #043949;
+  color: azure;
+}
+li,p{
+  font-size: 16px;
 }
