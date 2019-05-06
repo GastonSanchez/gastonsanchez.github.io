@@ -1,5 +1,8 @@
 /*tamaño del body*/
 body{
+  display: inline-block;
+  width: 100%;
+  padding: 0px;
   margin: 0px;
   font-family: 'Montserrat', sans-serif;
   border: px solid #000;
@@ -7,22 +10,22 @@ body{
   background: #CAF1FE;
 }
 header {
-    display: block;
+    display: inline-block;
     font-family: 'Montserrat', sans-serif;
-    margin: 0px;
-    padding: 25px;
+    width: 100%;
+    padding-top: 30px;
     border: px solid #000;
-    height: 150px;
+    height: 200px;
   background: #091A2E ;
 }
 /*ubicacion del nombre de la liga*/
 header a{
-  color: black;
+  color: chartreuse;
   display: inline-block;
   position: relative;
   float: top;
   padding-top: 25px;
-  margin: 5px;
+  margin: 10px;
   font-size: 50px;
   z-index: 300;
 }
@@ -35,6 +38,7 @@ header img{
   right: 690px;
   float: left;
   z-index: 300;
+  margin-left: 20px
   
 }
 /*contenedor de los titulos de cada pagina*/
@@ -45,21 +49,20 @@ header img{
 }
 /*ubicacion del contenedor del titulo de cada pagina*/
 #titulo h1 {
-  display: block;
+  display: inline-block;
   position: relative;
-  width: 480px;
-  padding-left: 15px;
-  padding-right:15px;
-  margin-left: 530px;
+  text-align: center;
+  width: 100%;
   border: px solid #000;
-  top: 30px;
+  top: 25px;
   z-index: 300;
 }
 /*contenedor del nav*/
 div nav {
-  display: inline;
+  display: block;
   position: absolute;
   background: #043949;
+  text-align: center;
   width: 100%;
   top: 200px;
   border: 0px solid #000;
@@ -74,9 +77,8 @@ nav a{
   font-size: 25px;
   display: inline-block;
   position: relative;
-  margin-left: 65px;
-  padding-left: 30px;
-  padding-right: 0px;
+  text-align: center;
+  margin-left: 95px;
 }
 /*contenedor de la informacion principal de cada pagina*/
 section {
@@ -173,7 +175,8 @@ h3{
 }
 .reglas{
   display: inline-block;
-  margin-left: 400px;
+  width: 100%;
+  text-align: center;
   padding: 2px;
   text-decoration: underline;
   font-size: 20px;
