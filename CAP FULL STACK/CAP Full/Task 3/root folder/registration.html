@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="styles/nysl_3.css">
+</head>
+
+<body>
+  <header>
+    <div id="cabecera">
+      <a href="index.html" id="nombreliga">Northside Youth Soccer League</a>
+      <img src="nysl_logo.png" alt="logo de la liga de futbo" id="logo">
+    </div>
+  </header>
+  <div class="cuerpo">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About NYSL</a>
+      <a href="contact.html">Contact</a>
+      <a href="rules.html">Rules of Play & Policies</a>
+      <a href="game_info.html">Games Information</a>
+    </nav>
+  </div>
+  <div id="titulo">
+    <h1>Registration Form</h1>
+  </div>
+  <form action="show_data.html" method="get">
+    <p>Player’s First Name:</p>
+    <input type="text" name="first_name">
+    <p>Last Name:</p>
+    <input type="text" name="last_name">
+    <p>Street Address:</p>
+    <input type="text" name="address">
+    <p>City:</p>
+    <input type="text" name="city">
+    <p>Zip Code:</p>
+    <input type="text" name="zip_code">
+    <p>Birth Date (mm/dd/yyyy:</p>
+    <input type="text" name="birthdate">
+
+    <p>Gender:</p>
+    <input type="checkbox" name="gender" value="Female"> Female
+    <input type="checkbox" name="gender" value="Male"> Male
+    
+    <p>Grade:</p>
+    <input type="checkbox" name="grade" value="Pre-School"> Pre-School
+    <input type="checkbox" name="grade" value="1"> 1
+    <input type="checkbox" name="grade" value="2"> 2
+    <input type="checkbox" name="grade" value="3"> 3
+    <input type="checkbox" name="grade" value="4"> 4
+    <input type="checkbox" name="grade" value="5"> 5
+
+
+
+    <button name="submit">
+      <strong>Send Us</strong>
+    </button>
+  </form>
+</body>
+
+</html>
