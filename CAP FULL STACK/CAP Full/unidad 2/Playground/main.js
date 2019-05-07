@@ -20,4 +20,10 @@ if (age>ignasiAge){
 } else{
     console.log ("You have the same age as Ignasi")
 }
-["Fede","Seba","Eduart","Maxi","Fran"]
+var nombres = ["Fede","Seba","Eduart","Maxi","Fran"];
+
+console.log (nombres[0]);
+console.log (nombres[nombres.length-1]);
+for (i=0; i<nombres.length;i++){
+    console.log (nombres [i]);
+}
