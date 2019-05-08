@@ -193,3 +193,117 @@ footer{
 li,p{
   font-size: 16px;
 }
+
+/*Css del form*/
+form h2{
+  display: block;
+  font-size: 16px;
+  margin-left: 5%;
+}
+form div{
+  margin-top: 15px;
+}
+
+form p.permision{
+  margin-left: 5%;
+  display: block;
+}
+div.primero{
+  display: block;
+  margin-left: 5%;
+}
+.primero input{
+  width: 35%
+}
+.primero p{
+  display: inline
+}
+
+div.segundo{
+  display: block;
+  margin-left: 5%;
+}
+
+.segundo p{
+  display: inline-block;
+}
+.segundo input{
+  display: inline-block;
+  width: 80%
+}
+
+div.tercero{
+  display: block;
+  margin-left: 5%;
+}
+.tercero input{
+  width: 40%
+}
+.tercero p{
+  display: inline
+}
+
+div.cuarto{
+  display: inline-block;
+  margin-left: 5%;
+  width: 50%
+}
+.cuarto input{
+  width: 70%
+}
+
+div.quinto{
+  display: block;
+  margin-left: 5%;
+}
+
+.quinto p{
+  display: inline-block;
+}
+.quinto input{
+  display: inline-block;
+  margin-left: 20px;
+}
+
+form h3{
+  display: inline-block;
+  width: 40%;
+  font-size: 16px;
+  margin-left: 5%;
+}
+
+div.school{
+  display: inline-block;
+  width: 16%;
+  margin-left: 5%;
+}
+
+div.school p{
+  display: inline-block;
+  width: 80%
+}
+
+#have_uniform{
+  margin-left: 5%;
+  font-size: 20px;
+}
+
+#permission_to_play{
+  text-decoration: underline;
+}
+
+div.sexto{
+  display: inline-block;
+  margin-left: 5%;
+  width: 75%
+}
+div.sexto input{
+  width: 37%
+}
+
+#registration a{
+  font-size: 25px;
+  position: absolute;
+  top: 0px;
+  left: 89%
+}
