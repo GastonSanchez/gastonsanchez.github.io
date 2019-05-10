@@ -120,3 +120,75 @@ function colores (misColores){
 }
 
 console.log(colores(myColor));
+
+/*JavaScript String Functions - Exercise 1*/ 
+/*Write a JavaScript function that reverses a number.
+For example:if x=32443 then the output should be 34423.*/
+
+var x = 367259203248;
+var y = "" + x;
+
+function revertirNumero(numero){
+var numeroAlrrevez= numero[numero.length-1];
+
+    for (i=numero.length-2;i>=0;i--){
+
+        numeroAlrrevez= numeroAlrrevez+ numero[i];
+
+    }
+    return numeroAlrrevez;
+}
+
+console.log("numero ordenado: "+y);
+console.log("Numero al revez: " + revertirNumero(y));
+
+/*JavaScript String Functions - Exercise 2*/
+/*Write a JavaScript function that returns a string in alphabetical order.
+For ex,if x='webmaster' then the output should be 'abeemrstw'.
+Punctuation and numbers aren't passed in the string.*/
+
+var java ="javascript";
+
+function ordenAlfabetico (palabra){
+    var orden = [];
+    
+    for (i=0;i<palabra.length;i++){
+        orden.push(palabra[i]);
+    }
+    orden.sort();
+
+    var palabraOrdenada="";
+
+    for (i=0;i<orden.length;i++){
+        palabraOrdenada=palabraOrdenada + orden [i];
+    }
+    return palabraOrdenada;
+}
+
+console.log(ordenAlfabetico(java));
+
+/*JavaScript String Functions - Exercise 3*/
+/*Write a JavaScript function that converts the first letter of every word to uppercase.
+For ex, if x="prince of persia" then the output should be "Prince Of Persia".*/
+
+
+var prince = "prince of persia";
+
+function aMayuscula(frase){
+
+    letras=[];
+    
+    for(i=0;i<frase.length;i++){
+
+        if (frase[i]===" "){
+
+            frase[i+1].toUpperCase();
+
+        }
+
+    }
+    return frase;
+
+}
+
+console.log(aMayuscula(prince));
