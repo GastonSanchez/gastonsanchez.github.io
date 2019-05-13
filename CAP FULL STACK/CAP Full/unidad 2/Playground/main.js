@@ -126,21 +126,21 @@ console.log(colores(myColor));
 For example:if x=32443 then the output should be 34423.*/
 
 var x = 367259203248;
-var y = "" + x;
+var y = "" + x; /*convierte el numero en un string */
 
 function revertirNumero(numero){
-var numeroAlrrevez= numero[numero.length-1];
+var numeroAlreves = numero[numero.length-1];/*le asigna a NumeroAlreves el ultimo numero del parametro numero en primer lugar */
 
     for (i=numero.length-2;i>=0;i--){
 
-        numeroAlrrevez= numeroAlrrevez+ numero[i];
+        numeroAlreves= numeroAlreves+ numero[i];
 
-    }
-    return numeroAlrrevez;
+    }/*recorre el parametro "numero" en orden descendente y agrega cada numero a "numeroAlreves" */
+    return numeroAlreves;
 }
 
 console.log("numero ordenado: "+y);
-console.log("Numero al revez: " + revertirNumero(y));
+console.log("Numero al reves: " + revertirNumero(y));
 
 /*JavaScript String Functions - Exercise 2*/
 /*Write a JavaScript function that returns a string in alphabetical order.
@@ -153,15 +153,17 @@ function ordenAlfabetico (palabra){
     var orden = [];
     
     for (i=0;i<palabra.length;i++){
-        orden.push(palabra[i]);
+        orden.push(palabra[i]); /*mete cada letra de la palabra en un array*/
     }
-    orden.sort();
+    orden.sort(); /*ordena las letras dentro del array */
 
     var palabraOrdenada="";
 
     for (i=0;i<orden.length;i++){
         palabraOrdenada=palabraOrdenada + orden [i];
-    }
+        
+    }/*mete en palabraOrdenada cada letra del array ya odenado alfabeticamente*/
+
     return palabraOrdenada;
 }
 
@@ -172,17 +174,37 @@ console.log(ordenAlfabetico(java));
 For ex, if x="prince of persia" then the output should be "Prince Of Persia".*/
 
 
-var prince = "prince of persia";
+var x = "prince of persia";
+function mayusPrimeraLetra(x) {
+    return x.toLowerCase() //convertimos todo el texto en minuscula
+        .trim() //quitamos los espacios que puedan existir antes y despues del string
+        .split(' ') //separamos el string en un array de substrings.
+        .map(v => v[0].toUpperCase() + v.substr(1)) //creamos un nuevo array (v). Luego se le asigna mayuscula a la primera letra de cada elemento y se separan las demas letras dese la posición 1 con un .substr (sino, no aparecerían en el texto impreso.
+        .join(' '); //unimos cada elemento del array v con un espacio.
+}
+console.log(mayusPrimeraLetra(x));
 
-function aMayuscula(frase){
-    var letras=[];
-    for (i=0;i<frase.length;i++){
-        letras.push(frase[i]);
-        if (letras[i]===" "){
-            letras.push(frase.charAt(i+1).toUpperCase());
-        }
-    }
-    return letras;
+
+/*JavaScript String Functions - Exercise 4*/
+/*Write a JavaScript function that finds the longest word in a phrase.
+For example, if x = "Web Development Tutorial", then the output should be "Development".*/
+
+var x="Web Development Tutorial";
+
+function palabraLarga(x){
+
+    var palabraMasLarga = "";
+    var palabra = x.split(' ');
+
+    palabra.forEach(function(palabra) {
+    /*Recorre el array y compara la palabra segun el indice i con la actua "palabra mas larga"*/
+
+        if(palabra.length>palabraMasLarga.length){
+            palabraMasLarga=palabra; 
+        };
+        
+    });
+    return palabraMasLarga;
 }
 
-console.log(aMayuscula(prince));
+console.log(palabraLarga(x));
