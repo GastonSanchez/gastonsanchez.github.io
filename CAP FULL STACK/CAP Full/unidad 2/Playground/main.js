@@ -175,20 +175,14 @@ For ex, if x="prince of persia" then the output should be "Prince Of Persia".*/
 var prince = "prince of persia";
 
 function aMayuscula(frase){
-
-    letras=[];
-    
-    for(i=0;i<frase.length;i++){
-
-        if (frase[i]===" "){
-
-            frase[i+1].toUpperCase();
-
+    var letras=[];
+    for (i=0;i<frase.length;i++){
+        letras.push(frase[i]);
+        if (letras[i]===" "){
+            letras.push(frase.charAt(i+1).toUpperCase());
         }
-
     }
-    return frase;
-
+    return letras;
 }
 
 console.log(aMayuscula(prince));
