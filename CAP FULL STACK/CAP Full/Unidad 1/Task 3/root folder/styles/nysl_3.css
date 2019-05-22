@@ -1,14 +1,19 @@
+:root{
+  --colorLetras: chartreuse;
+}
+
 /*tamaño del body*/
-body{
+body {
   display: inline-block;
   width: 100%;
   padding: 0px;
   margin: 0px;
   font-family: 'Montserrat', sans-serif;
   border: px solid #000;
-  height:1000px;
+  height: 1000px;
   background: #CAF1FE;
 }
+
 header {
     display: inline-block;
     font-family: 'Montserrat', sans-serif;
@@ -16,11 +21,12 @@ header {
     padding-top: 30px;
     border: px solid #000;
     height: 200px;
-  background: #091A2E ;
+  background: #091A2E;
 }
+
 /*ubicacion del nombre de la liga*/
-header a{
-  color: chartreuse;
+header a {
+  color: var(--colorLetras);
   display: inline-block;
   position: relative;
   float: top;
@@ -29,24 +35,26 @@ header a{
   font-size: 50px;
   z-index: 300;
 }
+
 /*ubicacion del logo de la liga*/
-header img{
+header img {
   display: inline;
   width: 150px;
   height: 150px;
-  top:310px;
+  top: 310px;
   right: 690px;
   float: left;
   z-index: 300;
-  margin-left: 20px
-  
+  margin-left: 20px;
 }
+
 /*contenedor de los titulos de cada pagina*/
-#titulo{
+#titulo {
   display: inline;
   width: 4px;
   margin-left: 5px;
 }
+
 /*ubicacion del contenedor del titulo de cada pagina*/
 #titulo h1 {
   display: inline-block;
@@ -57,6 +65,7 @@ header img{
   top: 25px;
   z-index: 300;
 }
+
 /*contenedor del nav*/
 div nav {
   display: block;
@@ -71,15 +80,17 @@ div nav {
   z-index: 300;
   margin: 0px;
 }
+
 /*ubicacion de cada link del nav*/
-nav a{
-  color: chartreuse;
+nav a {
+  color: var(--colorLetras);
   font-size: 25px;
   display: inline-block;
   position: relative;
   text-align: center;
   margin-left: 95px;
 }
+
 /*contenedor de la informacion principal de cada pagina*/
 section {
   position: absolute;
@@ -91,45 +102,53 @@ section {
   padding-left: 30px;
   top: 330px
 }
-div #fechas{
+
+div #fechas {
   display: block;
 }
-h2{
+
+h2 {
   display: inline-block;
   margin: 2px;
   padding: 3px;
   font-size: 30px;
 }
- #titulosabout1{
+
+ #titulosabout1 {
    width: 30%;
   display: block;
   margin: 2px;
   padding: 3px;
   font-size: 30px;
 }
- #titulosabout2{
-   width: 30%;
-  display: block;
-  margin:2px;
-  padding: 3px;
-  font-size: 30px;
-}
- #titulosabout3{
+
+ #titulosabout2 {
    width: 30%;
   display: block;
   margin: 2px;
   padding: 3px;
   font-size: 30px;
 }
-section img{
+
+ #titulosabout3 {
+   width: 30%;
+  display: block;
+  margin: 2px;
+  padding: 3px;
+  font-size: 30px;
+}
+
+section img {
   display: inline;
-  width: 20px
+  width: 20px;
 }
+
 /*parrafos del Home*/
-p{
+p {
   display: inline-block;
   font-size: 20px
 }
+
 /*forma de cada parrafo de la pagina about*/
  .textos {
    width: 80%;
@@ -138,8 +157,9 @@ p{
   margin: 2px;
   padding: 1px;
 }
+
 /*forma de los textos de la pagina contact*/
-address p{
+address p {
   font-size: 30px;
   width: 550px;
   display: block;
@@ -197,8 +217,9 @@ li,p{
 /*Css del form*/
 form h2{
   display: block;
-  font-size: 16px;
+  font-size: 24px;
   margin-left: 5%;
+    padding: 0px;
 }
 form div{
   margin-top: 15px;
@@ -206,8 +227,8 @@ form div{
 
 form p.permision{
   margin-left: 5%;
-  display: block;
 }
+
 div.primero{
   display: block;
   margin-left: 5%;
@@ -216,7 +237,7 @@ div.primero{
   width: 35%
 }
 .primero p{
-  display: inline
+  display: inline;
 }
 
 div.segundo{
@@ -272,20 +293,10 @@ form h3{
   margin-left: 5%;
 }
 
-div.school{
-  display: inline-block;
-  width: 16%;
+/* css para los select del form*/
+div.selectOptions{
+  display: inline;
   margin-left: 5%;
-}
-
-div.school p{
-  display: inline-block;
-  width: 80%
-}
-
-#have_uniform{
-  margin-left: 5%;
-  font-size: 20px;
 }
 
 #permission_to_play{
@@ -306,4 +317,13 @@ div.sexto input{
   position: absolute;
   top: 0px;
   left: 89%
+}
+
+select, #haveUniform, #position h2 {
+    display: inline;
+}
+
+legend {
+    text-align: center;
+    font-size: 30px;
 }
