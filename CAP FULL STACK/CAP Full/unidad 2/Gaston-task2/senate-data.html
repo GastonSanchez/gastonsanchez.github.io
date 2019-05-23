@@ -1,115 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
 
-    </head>
-    
-    <body>
-         <nav>
-          <div>
-            <div>
-              <a href="#">TGIF</a>
-            </div>
-            <ul >
-              <li><a href="#">Home</a></li>
-              <li >
-                <a href="#">Congress 113</a>
-                <ul >
-                  <li><a href="#">Senate</a></li>
-                  <li><a href="#">House</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>        
-  
+<head>
+  <!-- La siguiente línea es para agregar la libreria JQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-        <header>            
-            <div>
-            </div>
-        </header>
-        <!--Table container-->
-        <div>
-            <h2>Senators</h2>
-            <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
-    	    <table>
-                <thead>
-                    <tr>
-                        <th>Members</th>
-                        <th>First name</th>
-                        <th>Middle name</th>
-                        <th>Last name</th>
-                        <th>Party</th>
-                        <th>Total votes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Lamar</td>
-                        <td></td>
-                        <td>Alexander</td>
-                        <td>R</td>
-                        <td>657</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Kelly</td>
-                        <td>null</td>
-                        <td>Ayotte</td>
-                        <td>R</td>
-                        <td>657</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Roy</td>
-                        <td></td>
-                        <td>Blunt</td>
-                        <td>R</td>
-                        <td>657</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Barbara</td>
-                        <td>null</td>
-                        <td>Boxer</td>
-                        <td>D</td>
-                        <td>657</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Sherrod</td>
-                        <td></td>
-                        <td>Brown</td>
-                        <td>D</td>
-                        <td>657</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Richard</td>
-                        <td>M.</td>
-                        <td>Burr</td>
-                        <td>R</td>
-                        <td>657</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Tammy</td>
-                        <td>null</td>
-                        <td>Baldwin</td>
-                        <td>D</td>
-                        <td>657</td>
-                    </tr>
-                </tbody>
-            </table>
-    	</div>
-      <table id="senate-data">
-        
-      </table>
-      
-      <script src="scripts/congress-113-senate.js"></script>
-      <!--<script>
-        document.getElementById("senate-data").innerHTML = ;
-      </script>-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<title>Senate</title>
+</head>
+
+<body>
+  <nav>
+    <div>
+      <div>
+        <a href="#">TGIF</a>
+      </div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li>
+          <a href="#">Congress 113</a>
+          <ul>
+            <li><a href="#">Senate</a></li>
+            <li><a href="#">House</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <header>
+    <div>
+    </div>
+  </header>
+  <!--Table container-->
+  <div>
+    <h2>Senators</h2>
+    <p>First convened in 1789, the composition and powers of the Senate are established in Article One
+      of the U.S. Constitution. Each state is represented by two senators,
+      regardless of population, who serve staggered six-year terms.
+      The Senate has several exclusive powers not granted to the House,
+      including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries,
+      federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers,
+      as well as trial of federal officials impeached by the House.
+    </p>
+  </div>
+
+  <script src="scripts/congress-113-senate.js"></script> <!--conectando el html con mi script que tiene la variabe data-->
+
+  <table id="senate-data">
+
+    <script src="senatemembers.js"></script>
+
+    <script type="text/javascript">
+      var str = JSON.stringify(data, null, 2); //mete en la variable str los datos de JSON en forma de string
+      var valor = JSON.parse(str) //mete en la variable valor el string str pasado a objeto de JavaScript
+      var pro = document.getElementById("senate-data") //crea una variable pro que hace referencia a el elemento <table> con el ID="senate-data"
+
+      var tbody = document.createElement("tbody") //crea el elemento <tbody> y lo relaciona con una variable
+      // pro.appendChild(tbody)
+
+      var tabla = "<thead class='thead-dark'><tr><th>Full Name</th><th>Party</th><th>State</th><th>Senority</th><th>Percentage of votes</th></tr></thead>"
+      //iguala la variable "tabla" al elemento <thead> con class="thead-dark" que contiene los elementos <th> necesarios.
+
+      var arreglo = valor.results[0].members //mete en una variable "arreglo" el array "members[]" que esta dentro del array "results[]" que viene del objeto "valor"
+      agregarVotantes(arreglo) //llama a la funcion agregarVotantes y le pasa como argumento el array arreglos[]
+
+      function agregarVotantes(arreglo) {
+
+
+        for (let i = 0; i < arreglo.length; i++) { //bucle for con variabe local i que va hasta arreglo.length
+
+          tabla += "<tr>" //en cada iteracion del for lo primero que hace es crear un alemento <tr> 
+
+          //console.log(array[i].last_name+array[i].first_name+array[i].middle_name)
+          if (arreglo[i].last_name != null && arreglo[i].first_name != null && arreglo[i].middle_name != null) {
+
+            tabla += "<td><a href='" + arreglo[i].url + "'>" + arreglo[i].last_name + " " + arreglo[i].first_name + " " + arreglo[i].middle_name + "</a></td>"
+
+          } else if (arreglo[i].middle_name == null) {
+
+            tabla += "<td><a href='" + arreglo[i].url + "'>" + arreglo[i].last_name + " " + arreglo[i].first_name + " " + "..." + "</a></td>"
+
+          } //crea un condicional en el que si el nombre entero tiene todas sus partes distintas de null, hace un link con el nobre completo con una etiqueta <a> que hace referencia a la url del senador. y sino, si el middle_name es igual a null lo omite en el link
+
+          tabla += "<td>" + " " + arreglo[i].party + " " + "</td>" // agrega a tabla un elemento <td> con el partido
+          tabla += "<td>" + " " + arreglo[i].state + " " + "</td>" // agrega a tabla un elemento <td> con el estado
+          tabla += "<td>" + " " + arreglo[i].seniority + " " + "</td>" // agrega a tabla un elemento <td> con los años en el puesto
+          tabla += "<td>" + " " + arreglo[i].votes_with_party_pct + "%" + " " + "</td></tr>" // agrega a tabla un elemento <td> con porcentaje de votos en el partido y cierra el elemento <tr> abierto al principio del bucle for
+
+        }
+      }
+
+      //  tbody.appendChild(tabla)
+      //  pro.appendChild(tbody)
+      pro.innerHTML = tabla //mete el HTML que esta en "tabla" en la variable "pro" que hace referencia al elemento <table> del html
+
+    </script>
+
+  </table>
 </body>
+
 </html>

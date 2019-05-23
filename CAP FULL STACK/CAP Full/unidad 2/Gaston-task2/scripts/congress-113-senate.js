@@ -4844,48 +4844,4 @@ var data = {
       }
    ]
 }
-
-//for (var i = 0;i < data.results.members.lenght();i++) {
-  
-  //document.getElementById("senate-data").innerHTML +=<tr id = "tablerow">+ results.members[] +</tr> ;
-
-  //for (var j = 0;j < data.results.members.lenght();j++) {
-
-    //document.getElementById("tablerow").innerHTML +=<td>+ JSON.stringify(data.,null,2) +</td> ;
-
-  //}
-//}
-
-//var dbParam, xmlhttp, myObj, x, txt = "";
-//dbParam = JSON.stringify(data);
-//xmlhttp = new XMLHttpRequest();
-//xmlhttp.onreadystatechange = function() {
-//  if (this.readyState == 4 && this.status == 200) {
-  //  myObj = JSON.parse(this.responseText);
-    //txt += "<table border='1'>"
-    //for (x in myObj) {
-      //txt += "<tr><td>" + myObj[x].name + "</td></tr>";
-    //}
-    //txt += "</table>"    
-    //document.getElementById("senate-data").innerHTML = txt;
-  //}
-//};
-//xmlhttp.open("POST", "json_demo_db_post.php", true);
-//xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//xmlhttp.send("x=" + dbParam);
-
-function mostrarSenado (){
-var txt = "";
-var i,j,x;
-  for ( i in data.results.members) {
-    
-    txt += "<tr>"+"<td>" + data.results[members[i]]; + "</td>"+"</tr>";
-    
-  }
-
-  document.getElementById("senate-data").innerHTML = txt;
-}
-
-mostrarSenado();
-
   
