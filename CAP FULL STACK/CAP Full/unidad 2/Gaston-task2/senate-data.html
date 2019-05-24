@@ -2,48 +2,46 @@
 <html lang="en">
 
 <head>
-  <!-- La siguiente línea es para agregar la libreria JQuery-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-<title>Senate</title>
+    <title>Senate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-  <nav>
-    <div>
-      <div>
-        <a href="#">TGIF</a>
-      </div>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li>
-          <a href="#">Congress 113</a>
-          <ul>
-            <li><a href="#">Senate</a></li>
-            <li><a href="#">House</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
 
   <header>
+      <div>
+          <a href="#">TGIF</a>
+      </div>
     <div>
+          <nav>
+            <div class="container-fluid">
+              <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Congress 113</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Senate</a>
+                      <a class="dropdown-item" href="house-data.html">House</a>
+                    </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
     </div>
   </header>
   <!--Table container-->
-  <div>
+  <div class="container">
     <h2>Senators</h2>
-    <p>First convened in 1789, the composition and powers of the Senate are established in Article One
+    <div class="row">
+    <p class="col-sm-8">First convened in 1789, the composition and powers of the Senate are established in Article One
       of the U.S. Constitution. Each state is represented by two senators,
       regardless of population, who serve staggered six-year terms.
       The Senate has several exclusive powers not granted to the House,
@@ -51,11 +49,13 @@
       federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers,
       as well as trial of federal officials impeached by the House.
     </p>
+    </div>
   </div>
 
   <script src="scripts/congress-113-senate.js"></script> <!--conectando el html con mi script que tiene la variabe data-->
 
-  <table id="senate-data">
+  <div class="container">
+  <table class="table table-striped table-bordered" id="senate-data">
 
     <script src="senatemembers.js"></script>
 
@@ -106,6 +106,7 @@
     </script>
 
   </table>
+</div>
 </body>
 
 </html>
