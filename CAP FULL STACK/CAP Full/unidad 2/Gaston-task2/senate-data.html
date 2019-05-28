@@ -57,11 +57,11 @@
 
   <div class="container">
       <span>Filter by Party:</span>
-        <input type="checkbox" name="party" value="Republican">
+        <input type="checkbox" name="party" id="republicano" onchange="arrayFiltro()">
         <span>Republican</span>
-        <input type="checkbox" name="party" value="Democrat">
+        <input type="checkbox" name="party" id="democrata" onchange="arrayFiltro()">
         <span>Democrat</span>
-        <input type="checkbox" name="party" value="Independent">
+        <input type="checkbox" name="party" id="independiente" onchange="arrayFiltro()">
         <span>Independent</span>
   </div>
 
@@ -76,6 +76,25 @@
   <script src="scripts/congress-113-senate.js"></script> <!--conectando el html con mi script que tiene la variabe data-->
 
   <script type="text/javascript">
+
+  function arrayFiltro(){
+    let arrayAux = [];
+    let checkDemocrata = document.getElementById("democrata");
+    let checkIndependiente = document.getElementById("independiente");
+    let checkRepublicano = document.getElementById("republicano");
+
+    if (checkDemocrata.checked){
+      arrayAux.push("D");
+    }
+    if (checkRepublicano.checked){
+      arrayAux.push("R");
+    }
+    if (checkIndependiente.checked){
+      arrayAux.push("I");
+    }
+
+    console.log(arrayAux);
+  }
   //var str = JSON.stringify(data, null, 2); //mete en la variable str los datos de JSON en forma de string
   //var valor = JSON.parse(str) //mete en la variable valor el string str pasado a objeto de JavaScript
   var pro = document.getElementById("senate-data") //crea una variable pro que hace referencia a el elemento <table> con el ID="senate-data"
@@ -86,36 +105,59 @@
   var tabla = "<thead class='thead-dark'><tr><th>Full Name</th><th>Party</th><th>State</th><th>Senority</th><th>Percentage of votes</th></tr></thead>"
   //iguala la variable "tabla" al elemento <thead> con class="thead-dark" que contiene los elementos <th> necesarios.
 
-  var arreglo = data.results[0].members //mete en una variable "arreglo" el array "members[]" que esta dentro del array "results[]" que viene del objeto "valor"
-  agregarVotantes(arreglo) //llama a la funcion agregarVotantes y le pasa como argumento el array arreglo[]
+  var arreglo = data.results[0].members; //mete en una variable "arreglo" el array "members[]" que esta dentro del array "results[]" que viene del objeto "data"
 
-  
+  var partychecked = Array.from(document.querySelectorAll('input[name=party]:checked')).map(elt => elt.value);
+
+  agregarVotantes(arreglo, partychecked) //llama a la funcion agregarVotantes y le pasa como argumento el array arreglo[]
 
   pro.innerHTML = tabla //mete el HTML que esta en "tabla" en la variable "pro" que hace referencia al elemento <table> del html
 
-  function agregarVotantes(arreglo) {
+  function agregarVotantes(arreglo, partychecked) {
 
     for (let i = 0; i < arreglo.length; i++) { //bucle for con variabe local i que va hasta arreglo.length
 
-      tabla += "<tr>" //en cada iteracion del for lo primero que hace es crear un alemento <tr> 
+      tabla += "<tr>" //en cada iteracion del for lo primero que hace es crear un alemento <tr>
 
-      //console.log(array[i].last_name+array[i].first_name+array[i].middle_name)
-      if (arreglo[i].last_name != null && arreglo[i].first_name != null && arreglo[i].middle_name != null) {
+      var party= data.results[0].members.party;
 
-        tabla += "<td><a href='" + arreglo[i].url + "'>" + arreglo[i].last_name + " " + arreglo[i].first_name + " " + arreglo[i].middle_name + "</a></td>"
+        if (partychecked.includes(party)){
 
-      } else if (arreglo[i].middle_name == null) {
+          //console.log(array[i].last_name+array[i].first_name+array[i].middle_name)
+          if (arreglo[i].last_name != null && arreglo[i].first_name != null && arreglo[i].middle_name != null) {
 
-        tabla += "<td><a href='" + arreglo[i].url + "'>" + arreglo[i].last_name + " " + arreglo[i].first_name + " " + "..." + "</a></td>"
+          tabla += "<td><a href='" + arreglo[i].url + "'>" + arreglo[i].last_name + " " + arreglo[i].first_name + " " + arreglo[i].middle_name + "</a></td>"
 
-      } //crea un condicional en el que si el nombre entero tiene todas sus partes distintas de null, hace un link con el nobre completo con una etiqueta <a> que hace referencia a la url del senador. y sino, si el middle_name es igual a null lo omite en el link
+        } else if (arreglo[i].middle_name == null) {
 
-      tabla += "<td>" + " " + arreglo[i].party + " " + "</td>" // agrega a tabla un elemento <td> con el partido
-      tabla += "<td>" + " " + arreglo[i].state + " " + "</td>" // agrega a tabla un elemento <td> con el estado
-      tabla += "<td>" + " " + arreglo[i].seniority + " " + "</td>" // agrega a tabla un elemento <td> con los años en el puesto
-      tabla += "<td>" + " " + arreglo[i].votes_with_party_pct + "%" + " " + "</td></tr>" // agrega a tabla un elemento <td> con porcentaje de votos en el partido y cierra el elemento <tr> abierto al principio del bucle for
+          tabla += "<td><a href='" + arreglo[i].url + "'>" + arreglo[i].last_name + " " + arreglo[i].first_name + " " + "..." + "</a></td>"
+
+        } //crea un condicional en el que si el nombre entero tiene todas sus partes distintas de null, hace un link con el nobre completo con una etiqueta <a> que hace referencia a la url del senador. y sino, si el middle_name es igual a null lo omite en el link
+
+        tabla += "<td>" + " " + arreglo[i].party + " " + "</td>" // agrega a tabla un elemento <td> con el partido
+        tabla += "<td>" + " " + arreglo[i].state + " " + "</td>" // agrega a tabla un elemento <td> con el estado
+        tabla += "<td>" + " " + arreglo[i].seniority + " " + "</td>" // agrega a tabla un elemento <td> con los años en el puesto
+        tabla += "<td>" + " " + arreglo[i].votes_with_party_pct + "%" + " " + "</td></tr>" // agrega a tabla un elemento <td> con porcentaje de votos en el partido y cierra el elemento <tr> abierto al principio del bucle for
+      } else{
+        if (arreglo[i].last_name != null && arreglo[i].first_name != null && arreglo[i].middle_name != null) {
+
+tabla += "<td><a href='" + arreglo[i].url + "'>" + arreglo[i].last_name + " " + arreglo[i].first_name + " " + arreglo[i].middle_name + "</a></td>"
+
+} else if (arreglo[i].middle_name == null) {
+
+tabla += "<td><a href='" + arreglo[i].url + "'>" + arreglo[i].last_name + " " + arreglo[i].first_name + " " + "..." + "</a></td>"
+
+} //crea un condicional en el que si el nombre entero tiene todas sus partes distintas de null, hace un link con el nobre completo con una etiqueta <a> que hace referencia a la url del senador. y sino, si el middle_name es igual a null lo omite en el link
+
+tabla += "<td>" + " " + arreglo[i].party + " " + "</td>" // agrega a tabla un elemento <td> con el partido
+tabla += "<td>" + " " + arreglo[i].state + " " + "</td>" // agrega a tabla un elemento <td> con el estado
+tabla += "<td>" + " " + arreglo[i].seniority + " " + "</td>" // agrega a tabla un elemento <td> con los años en el puesto
+tabla += "<td>" + " " + arreglo[i].votes_with_party_pct + "%" + " " + "</td></tr>" // agrega a tabla un elemento <td> con porcentaje de votos en el partido y cierra el elemento <tr> abierto al principio del bucle for
+
+      }
 
     }
+
   }
 
   </script>
