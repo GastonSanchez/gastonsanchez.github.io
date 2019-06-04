@@ -68,6 +68,13 @@
   <!--checkbox-->
 
   <div class="container">
+    <label for="states">Filter by State</label>
+      <select id="states" name="states"></select>
+  </div>
+  <!--dropdown menu-->
+
+
+  <div class="container">
     <table class="table table-hover table-borderless table-striped" id="senate-data"></table>
   </div>
   <!--tabla-->
@@ -77,10 +84,14 @@
   </div>
   <!--footer-->
 
+  <script src="scripts/states-name.js"></script>
+  <!--conectando el html con mi script que tiene la variabe satesName-->
   <script src="scripts/congress-113-senate.js"></script>
   <!--conectando el html con mi script que tiene la variabe data-->
+  
 
   <script type="text/javascript">
+
     let arrayAux = [];
     var str = JSON.stringify(data, null, 2); //mete en la variable str los datos de JSON en forma de string
     var valor = JSON.parse(str) //mete en la variable valor el string str pasado a objeto de JavaScript
