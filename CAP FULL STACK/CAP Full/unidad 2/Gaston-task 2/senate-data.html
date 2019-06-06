@@ -69,7 +69,7 @@
 
   <div class="container">
     <label for="states">Filter by State</label>
-      <select id="states" name="states"></select>
+      <select id="states" onchange="dibujarTabla(filtrarDropdown())"> </select>
   </div>
   <!--dropdown menu-->
 
@@ -101,11 +101,47 @@
     var arreglo = valor.results[0].members; //mete en una variable "arreglo" el array "members[]" que esta dentro del array "results[]" que viene del objeto "data"
     dibujarTabla(arreglo); //Llamamos a la funcion dibujarTabla con arreglo como parametro.
 
+    function filtrarDropdown(){
+      let estadoSelec = document.getElementById("states").value; 
+      console.log(estadoSelec);//para verificar en consola el valor que devuelve el estado seleccionado
+
+      if (estadoSelec == 'todos'){
+        return filtrarCheckbox();
+      } else {
+        return filtrarPorEstado(estadoSelec , filtrarCheckbox());//mando como parametros el nombre del estado seleccionado y el arreglo que devueve la funcion filtrarCheckbox()
+      }
+    }
+    function filtrarPorEstado( estadoSelec, arregloFiltrado) {
+      var arregloPorEstado = [];
+      for (let i = 0; i < arregloFiltrado.length; i++) {
+        if (arregloFiltrado[i].state == estadoSelec) {
+          arregloPorEstado.push(arregloFiltrado[i]);
+        }
+      }
+      return arregloPorEstado;
+    }
+
+    function filtroDoble(arreglo) {//recibe alguno de los dos posibles arreglos que devuelve filtrarCheckbox() y si es necesario lo filtra por estados
+      let estadoSelec = document.getElementById("states").value;
+      var arregloPorEstado = [];
+      if (estadoSelec == 'todos'){
+        return arreglo; //si todos los estados estan seleccionados, devuelve el arreglo como llegó
+      } else {          // sino filtra los miembros del arreglo pertenecientes al estado seleccionado y despues lo devuelve a filtrarCheckbox()
+        for (let i = 0; i < arreglo.length; i++) {
+        if (arreglo[i].state == estadoSelec) {
+          arregloPorEstado.push(arreglo[i]);
+        }
+      }
+        return arregloPorEstado;
+      }
+    }
+
     function filtrarCheckbox() {
       arrayAux = [];
       let checkRepublicano = document.getElementById("republicano");
       let checkDemocrata = document.getElementById("democrata");
       let checkIndependiente = document.getElementById("independiente");
+      let estadoElegido = document.getElementById("states").value;
 
       console.log("Republicanos: " + checkRepublicano.checked); //Para verificar el estado de los checkbox
       console.log("Democrata: " + checkDemocrata.checked);
@@ -120,9 +156,8 @@
       if (checkIndependiente.checked) {
         arrayAux.push("I");
       }
-      if (arrayAux.length ==
-        0) { //Este if es para dibujar toda la tabla entera de nuevo si no hay ningun checkbox marcado
-        return arreglo;
+      if (arrayAux.length == 0) { //Este if es para dibujar toda la tabla entera de nuevo si no hay ningun checkbox marcado
+        return filtroDoble(arreglo);//paso el arreglo de todos los representantes por el filtro de los estados antes de dibujarlo
       } else {
         return filtrarPorPartido(arrayAux);
       }
@@ -137,10 +172,11 @@
           arregloFiltrado.push(elemento);
         }
       }
-      return arregloFiltrado;
+      return filtroDoble(arregloFiltrado); //antes de devolver el arreglo filtrado por patidos, lo paso por el filtro de estados tambien, asi no dibuja toda la tabla de nuevo
     }
 
     function comprobarSiEstaAdentro(elemento) {
+      let estadoElegido =  document.getElementById("states").value;
       for (let i = 0; i < arrayAux.length; i++) {
         if (arrayAux[i] == elemento.party) {
           return true;

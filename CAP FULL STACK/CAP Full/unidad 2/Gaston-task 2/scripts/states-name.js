@@ -241,9 +241,9 @@ var statesName = [
 var menu = document.getElementById("states");
     crearDropdown(statesName);
     function crearDropdown(nombres){
-      var dropdownMenu ="<option id='all'>All</option>";
+      var dropdownMenu ="<option id='all' value='todos' >All</option>";
       for (let i=0; i<nombres.length;i++) {
-        dropdownMenu+= "<option value='"+nombres[i].name+"' id='"+nombres[i].name+"'>"+nombres[i].abbreviation+"</option>"
+        dropdownMenu+= "<option value='"+nombres[i].abbreviation+"' id='"+nombres[i].abbreviation+"'>"+nombres[i].abbreviation+"</option>"
 
       }
       menu.innerHTML=dropdownMenu;
