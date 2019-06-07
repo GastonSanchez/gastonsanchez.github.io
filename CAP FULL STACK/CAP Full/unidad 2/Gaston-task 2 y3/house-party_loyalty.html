@@ -1,47 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
-    </head>
+        <title>House Loyalty</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      </head>
     
     <body>
-         <nav>
-          <div>
-            <div>
-              <a href="#">TGIF</a>
+        <header>
+            <div class="container" >
+                <a href="info@tgif.net">TGIF</a>
             </div>
-            <ul >
-              <li><a href="#">Home</a></li>
-              <li >
-                <a href="#">Congress 113</a>
-                <ul >
-                  <li><a href="#">Senate</a></li>
-                  <li><a href="#">House</a></li>
-                </ul>
-              </li>  
-              <li>
-                <a href="#">Attendance</a></li>
-                <ul>
-                    <li><a href="#">Senate</a></li>
-                    <li><a href="#">House</a></li>
-                </ul>
-              </li>  
-              <li>
-                <a href="#">Party Loyalty</a>
-                <ul>
-                    <li><a href="#">Senate</a></li>
-                    <li><a href="#">House</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>        
+      
+            <div class="container">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark rounded">
+                  <div>
+                    <ul class="nav nav-pills">
+                      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Congress 113</a>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="house-data.html">House</a>
+                            <a class="dropdown-item" href="senate-data.html">Senate</a>
+                          </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Attendance</a>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="house-attendance.html">House</a>
+                            <a class="dropdown-item" href="senate-attendance.html">Senate</a>
+                          </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty</a>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="house-party_loyalty.html">House</a>
+                            <a class="dropdown-item" href="senate-party_loyalty.html">Senate</a>
+                          </div>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+            </div>
+        </header>        
   
-
-        <header>            
-            <div>
-            </div>
-        </header>
         <!--Table container-->
         <div>
             <h2>Party Loyalty</h2>
