@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>House</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container" >
+            <a href="info@tgif.net">TGIF</a>
+        </div>
+  
+        <div class="container">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark rounded">
+              <div>
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Congress 113</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">House</a>
+                        <a class="dropdown-item" href="senate-data.html">Senate</a>
+                      </div>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+        </div>
+    </header>
+
+  <!--Table container-->
+  <div class="container">
+    <h2>Congressmen</h2>
+
+    <div class="row">
+      <p class="col-sm-8">The major power of the House is to pass federal legislation that affects the entire country,
+         although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law 
+         (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber).
+          The House has some exclusive powers: the power to initiate revenue bills, to impeach officials 
+          (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.
+      </p>
+      <p class="col-sm-8">Each U.S. state is represented in the House in proportion to its population as measured in the census,
+         but every state is entitled to at least one representative. 
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <form>Filter by Party:
+      <input type="checkbox" name="party" id="republicano" onchange="dibujarTabla(filtrarCheckbox())">Republican
+      <input type="checkbox" name="party" id="democrata" onchange="dibujarTabla(filtrarCheckbox())">Democrat
+      <input type="checkbox" name="party" id="independiente" onchange="dibujarTabla(filtrarCheckbox())">Independent
+    </form>
+  </div>
+  <!--checkbox-->
+
+  <div class="container">
+      <label for="states">Filter by State</label>
+        <select id="states" onchange="dibujarTabla(filtrarDropdown())"> </select>
+  </div>
+  <!--dropdown menu-->
+  
+  
+    <div class="container">
+      <table class="table table-hover table-borderless table-striped" id="house-data"></table>
+    </div>
+    <!--tabla-->
+  
+    <div class="container">
+      <p class="footer-copyright text-center py-3 bg-dark rounded">© 2016| All Rights Reserved</p>
+    </div>
+    <!--footer-->
+  
+    <script src="scripts/states-name.js"></script>
+    <!--conectando el html con mi script que tiene la variabe satesName-->
+    <script src="scripts/congress-113-house.js"></script>
+    <!--conectando el html con mi script que tiene la variabe data-->
+
+  <script type="text/javascript">
+
+  let arrayAux = [];
+  var str = JSON.stringify(data, null, 2); //mete en la variable str los datos de JSON en forma de string
+  var valor = JSON.parse(str) //mete en la variable valor el string str pasado a objeto de JavaScript
+  var pro = document.getElementById("house-data") //crea una variable pro que hace referencia a el elemento <table> con el ID="senate-data"
+  var tbody = document.createElement("tbody") //crea el elemento <tbody> y lo relaciona con una variable
+  // pro.appendChild(tbody)
+  var arreglo = data.results[0].members //mete en una variable "arreglo" el array "members[]" que esta dentro del array "results[]" que viene del objeto "valor"
+  dibujarTabla(arreglo) //llama a la funcion agregarVotantes y le pasa como argumento el array arreglo[]
+
+  function filtrarDropdown(){
+      let estadoSelec = document.getElementById("states").value; 
+      console.log(estadoSelec);//para verificar en consola el valor que devuelve el estado seleccionado
+
+      if (estadoSelec == 'todos'){
+        return filtrarCheckbox();
+      } else {
+        return filtrarPorEstado(estadoSelec , filtrarCheckbox());//mando como parametros el nombre del estado seleccionado y el arreglo que devueve la funcion filtrarCheckbox()
+      }
+    }
+    function filtrarPorEstado( estadoSelec, arregloFiltrado) {
+      var arregloPorEstado = [];
+      for (let i = 0; i < arregloFiltrado.length; i++) {
+        if (arregloFiltrado[i].state == estadoSelec) {
+          arregloPorEstado.push(arregloFiltrado[i]);
+        }
+      }
+      return arregloPorEstado;
+    }
+
+    function filtroDoble(arreglo) {//recibe alguno de los dos posibles arreglos que devuelve filtrarCheckbox() y si es necesario lo filtra por estados
+      let estadoSelec = document.getElementById("states").value;
+      var arregloPorEstado = [];
+      if (estadoSelec == 'todos'){
+        return arreglo; //si todos los estados estan seleccionados, devuelve el arreglo como llegó
+      } else {          // sino filtra los miembros del arreglo pertenecientes al estado seleccionado y despues lo devuelve a filtrarCheckbox()
+        for (let i = 0; i < arreglo.length; i++) {
+        if (arreglo[i].state == estadoSelec) {
+          arregloPorEstado.push(arreglo[i]);
+        }
+      }
+        return arregloPorEstado;
+      }
+    }
+
+    function filtrarCheckbox() {
+      arrayAux = [];
+      let checkRepublicano = document.getElementById("republicano");
+      let checkDemocrata = document.getElementById("democrata");
+      let checkIndependiente = document.getElementById("independiente");
+      let estadoElegido = document.getElementById("states").value;
+
+      console.log("Republicanos: " + checkRepublicano.checked); //Para verificar el estado de los checkbox
+      console.log("Democrata: " + checkDemocrata.checked);
+      console.log("Independiente: " + checkIndependiente.checked);
+
+      if (checkRepublicano.checked) {
+        arrayAux.push("R");
+      }
+      if (checkDemocrata.checked) {
+        arrayAux.push("D");
+      }
+      if (checkIndependiente.checked) {
+        arrayAux.push("I");
+      }
+      if (arrayAux.length == 0) { //Este if es para dibujar toda la tabla entera de nuevo si no hay ningun checkbox marcado
+        return filtroDoble(arreglo);//paso el arreglo de todos los representantes por el filtro de los estados antes de dibujarlo
+      } else {
+        return filtrarPorPartido(arrayAux);
+      }
+    }
+
+    function filtrarPorPartido(arrayAux) {
+      let arregloFiltrado = [];
+
+      for (let i = 0; i < arreglo.length; i++) {
+        let elemento = arreglo[i];
+        if (comprobarSiEstaAdentro(elemento)) {
+          arregloFiltrado.push(elemento);
+        }
+      }
+      return filtroDoble(arregloFiltrado); //antes de devolver el arreglo filtrado por patidos, lo paso por el filtro de estados tambien, asi no dibuja toda la tabla de nuevo
+    }
+
+    function comprobarSiEstaAdentro(elemento) {
+      let estadoElegido =  document.getElementById("states").value;
+      for (let i = 0; i < arrayAux.length; i++) {
+        if (arrayAux[i] == elemento.party) {
+          return true;
+        }
+      }
+      return false;
+      //return arrayAux.includes(elemento.party);
+    }
+
+
+    function dibujarTabla(arreglo) {
+      var tabla = "<thead class='thead-dark'><tr>" +
+        "<th>Full Name</th>" +
+        "<th>Party</th>" +
+        "<th>State</th>" +
+        "<th>Senority</th>" +
+        "<th>Percentage of votes</th>" +
+        "</tr></thead>";
+      for (let i = 0; i < arreglo.length; i++) { //bucle for con variabe local i que va hasta arreglo.length
+        tabla += "<tr>" //en cada iteracion del for lo primero que hace es crear un alemento <tr>
+        //console.log(array[i].last_name+array[i].first_name+array[i].middle_name)
+
+        if (arreglo[i].last_name != null && arreglo[i].first_name != null && arreglo[i].middle_name != null) {
+
+          tabla += "<td><a href='" + arreglo[i].url + "'>" + arreglo[i].last_name + " " + arreglo[i].first_name + " " +
+            arreglo[i].middle_name + "</a></td>"
+
+        } else if (arreglo[i].middle_name == null) {
+
+          tabla += "<td><a href='" + arreglo[i].url + "'>" + arreglo[i].last_name + " " + arreglo[i].first_name + " " +
+            "</a></td>"
+
+        } //crea un condicional en el que si el nombre entero tiene todas sus partes distintas de null, hace un link con el nobre completo con una etiqueta <a> que hace referencia a la url del senador. y sino, si el middle_name es igual a null lo omite en el link
+
+        tabla += "<td>" + " " + arreglo[i].party + " " + "</td>" // agrega a tabla un elemento <td> con el partido
+        tabla += "<td>" + " " + arreglo[i].state + " " + "</td>" // agrega a tabla un elemento <td> con el estado
+        tabla += "<td>" + " " + arreglo[i].seniority + " " +
+          "</td>" // agrega a tabla un elemento <td> con los años en el puesto
+        tabla += "<td>" + " " + arreglo[i].votes_with_party_pct + "%" + " " +
+          "</td></tr>" // agrega a tabla un elemento <td> con porcentaje de votos en el partido y cierra el elemento <tr> abierto al principio del bucle for
+      }
+      pro.innerHTML = tabla //mete el HTML que esta en "tabla" en la variable "pro".
+    }
+
+  </script>
+
+</body>
+
+</html>
