@@ -23,7 +23,7 @@
                 <nav class="navbar navbar-expand-sm bg-dark navbar-dark rounded">
                   <div>
                     <ul class="nav nav-pills">
-                      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Congress 113</a>
                           <div class="dropdown-menu">
@@ -35,7 +35,7 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Attendance</a>
                           <div class="dropdown-menu">
                             <a class="dropdown-item" href="house-attendance.html">House</a>
-                            <a class="dropdown-item" href="senate-attendance.html">Senate</a>
+                            <a class="dropdown-item" href="#">Senate</a>
                           </div>
                       </li>
                       <li class="nav-item dropdown">
@@ -51,7 +51,7 @@
             </div>
         </header>
         <!--Table container-->
-        <div>
+        <div class="container">
             <h2>Attendance</h2>
             <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
 
@@ -176,6 +176,33 @@
                 </tbody>
             </table>
 
-    	</div>    
+        </div>
+    <script src="scripts/states-name.js"></script>
+    <!--conectando el html con mi script que tiene la variabe satesName-->
+    <script src="scripts/congress-113-senate.js"></script>
+    <!--conectando el html con mi script que tiene la variabe data-->
+    <script type="text/javascript">
+    let arrayAux = [];
+    var str = JSON.stringify(data, null, 2); //mete en la variable str los datos de JSON en forma de string
+    var valor = JSON.parse(str) //mete en la variable valor el string str pasado a objeto de JavaScript
+    var arreglo = valor.results[0].members; //mete en una variable "arreglo" el array "members[]" que esta dentro del array "results[]" que viene del objeto "data"
+
+    var estadisticas= {};
+    estadisticas = {"number_of_democrats":0, "number_of_republicans":0,"number_of_independents":0, "total":0}
+
+    function crearObjerosPorPartido (arreglo){
+        let arregloDeRepresentantes = [];
+        arregloDeRepresentantes=arreglo;
+        let listaDeDemocratas = {};
+        let listaDeRepublicanos = {};
+        let listaDeIndependientes = {};
+
+        for (let i=0; i<arregloDeRepresentantes.length;i++){
+            
+        }
+
+
+    }
+    </script>
 </body>
 </html>
